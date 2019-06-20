@@ -1,0 +1,14 @@
+{% extends 'appblog/base_pattern.html' %}
+
+{% block title %}
+	{{ tag.title|title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+	<h1>Posts with tag <span style="text-decoration: underline;">{{ tag.title|title }}</span>:</h1>
+	<p>
+	{% for post in tag.posts.all %}
+		{% include 'appblog/includes/card_pattern.html' %}
+	{% endfor %}
+	</p>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'appblog/base_pattern.html' %}
+
+{% block title %}
+	Post - {{ block.super }}
+{% endblock %}
+ 
+{% block content %}
+	<h1 class="mb-5">Posts:</h1>
+	
+	{% for post in page.object_list %}
+		{% include 'appblog/includes/card_pattern.html' %}
+	{% endfor %}
+{% endblock %}

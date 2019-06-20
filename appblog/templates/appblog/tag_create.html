@@ -1,0 +1,25 @@
+{% extends 'appblog/base_pattern.html' %}
+
+{% block title %}
+	Tag Create - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+	<form action="{% url 'tag_create_url' %}" method="post">
+		{% csrf_token %}
+		{% for field in form %}
+			<div class="form-group">
+				
+				{{ field.label }}
+				{{ field }}
+
+				{% if field.errors %}
+					<div class="alert alert-danger mt-2">{{ field.errors }}</div>
+				{% endif %}
+				
+			</div>
+		{% endfor %}
+		<button type="submit" class="btn btn-dark">Create tag</button>
+	</form>
+
+{% endblock %}

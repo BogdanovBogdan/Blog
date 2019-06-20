@@ -1,0 +1,15 @@
+{% extends 'appblog/base_pattern.html' %}
+
+{% block title %}
+	Delete Tag "{{ tag.title|title }}" - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+ 	<form action="{{ tag.get_delete_url }}" method="post">
+ 		{% csrf_token %}
+
+		<h3>Are you sure delete tag "{{ tag.title }}"</h3>
+		<a href="{{ tag.get_absolute_url }}" class="btn btn-outline-primary border-primary mr-3">Cancel</a>
+		<button type="submit" class="btn btn-outline-danger border-danger">Delete</button>
+	</form>
+{% endblock %}

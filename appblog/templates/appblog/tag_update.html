@@ -1,0 +1,24 @@
+{% extends 'appblog/base_pattern.html' %}
+
+{% block title %}
+	Update Tag "{{ tag.title|title }}" - {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+	<form action="{{ tag.get_update_url }}" method="post">
+	{% csrf_token %}
+	
+	{% for field in form %}
+		<div class="form-group">
+			{{ field.label }}
+			{{ field }}
+
+			{% if field.errors %}
+				<div class="alert alert-danger mt-2">{{ field.errors }}</div>
+			{% endif %}
+		</div>
+	{% endfor %}
+	<button type="submit" class="btn btn-dark">Update</button>
+	</form>
+{% endblock %}
